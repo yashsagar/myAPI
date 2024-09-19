@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 // route
-app.use("/netFlix", netFlix);
+app.use("/netflix", netFlix);
 
 app.get("/test", (req, res) => {
   res.status(200).send("main route working");

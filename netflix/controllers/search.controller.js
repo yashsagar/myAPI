@@ -5,7 +5,6 @@ function urlGenerator(type, query) {
   return `https://api.themoviedb.org/3/search/${type}?query=${query}&include_adult=false&language=en-US&page=1`;
 }
 export async function search(req, res) {
-  console.log("triggerd");
   const { type, query } = req.params;
   const url = urlGenerator(type, query);
 
