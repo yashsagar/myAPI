@@ -1,5 +1,5 @@
 import { User } from "../models/user.model.js";
-import { ENV_VARS } from "../config/envVars.js";
+import ENV_VARS from "../config/envVars.js";
 import jwt from "jsonwebtoken";
 
 export const protectRoute = async (req, res, next) => {
@@ -10,7 +10,7 @@ export const protectRoute = async (req, res, next) => {
         .status(401)
         .json({ success: false, message: "Unauthorized - No Token Provided" });
     }
-    const decoded = jwt.verify(token, ENV_VARS.SECRET_KEY);
+    const decoded = jwt.verify(token, ENV_VARS("SECRET_KEY"));
 
     if (!decoded) {
       return res

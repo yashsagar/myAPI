@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import dotenv from "dotenv";
+import ENV_VARS from "./netflix/config/envVars.js";
 
 // route import
 import netFlix from "./netflix/netflix.route.js";
@@ -10,7 +10,6 @@ import netFlix from "./netflix/netflix.route.js";
 import { connectDB } from "./database.js";
 
 const app = express();
-dotenv.config();
 
 // middleware
 app.use(cors());
@@ -26,7 +25,7 @@ app.get("/test", (req, res) => {
 
 // starting the server
 app.listen(process.env.PORT, () => {
-  console.log(`sever started at http://localhost:${process.env.PORT}`);
+  console.log(`sever started at http://localhost:${ENV_VARS("PORT")}`);
 
   connectDB();
 });
